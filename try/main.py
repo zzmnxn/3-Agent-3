@@ -11,7 +11,7 @@ from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain import hub
 
 # Tools
-#from tool.problem import 
+from tool.problem import merge_pickles, filter_negative_reviews
 
 load_dotenv()
 openai_api_key = os.getenv('OPENAI_API_KEY')
@@ -21,7 +21,7 @@ llm = ChatOpenAI(
     api_key=openai_api_key,
     temperature=0)
 
-tools = []
+tools = [merge_pickles, filter_negative_reviews]
 
 # Prompt - 원하면 추가 작성 가능
 prompt = ChatPromptTemplate.from_messages([
